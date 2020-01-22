@@ -34,8 +34,17 @@ mat-hint {
   color: #A0A0A0 !important;
 }
 
+mat-icon {
+    color: #80868B;
+}
+
 input {
   color: white;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background: #2F2F2F;
+  border-radius:10px;
 }
 
 ::ng-deep .mat-focused mat-label {

@@ -11,5 +11,4 @@ export class VerificationComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

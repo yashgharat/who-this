@@ -9,13 +9,15 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationComponent } from './login/registration/registration.component';
 import { VerificationComponent } from './login/verification/verification.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    VerificationComponent
+    VerificationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,18 @@
-<p>verification works!</p>
+<div class="card-container">
+    <mat-card class="verification-card">
+        <mat-card-title class="verification-card-title">Welcome</mat-card-title>
+        <mat-card-content>
+            <h5 class="verification-subtitle">You should have gotten an email with a verification code</h5>
+            <p>
+              <mat-form-field class="verification-input" appearance="fill">
+                <mat-label>Verification Code</mat-label>
+                <input matInput>
+                <mat-icon matSuffix>remove_red_eye</mat-icon>
+              </mat-form-field>
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button class="verification-button">Verify</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

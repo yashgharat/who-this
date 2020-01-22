@@ -21,6 +21,10 @@
   margin-top: 75px !important;
 }
 
+mat-grid-list {
+    margin: 20px 100px;
+}
+
 mat-label {
   color: #80868B;
 }
