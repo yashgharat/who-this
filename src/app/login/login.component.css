@@ -1,0 +1,95 @@
+.card-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 800px;
+  height: 500px;
+  background: #121212;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.login-card-title {
+  font-weight: normal;
+  font-size: 34px;
+  line-height: 36px;
+  color: #FFF;
+  margin-top: 75px !important;
+}
+
+.login-input {
+  margin: 20px;
+  width: 352px;
+}
+
+mat-label {
+  color: #80868B;
+}
+
+mat-hint {
+  color: #A0A0A0 !important;
+}
+
+input {
+  color: white;
+}
+
+::ng-deep .mat-focused mat-label {
+  /*change color of label*/
+  color: #F48FB2 !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    background-color: #80868B !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #F48FB2 !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #F48FB2 !important;
+}
+
+::ng-deep.mat-form-field-element {
+  /*change color of underline when focused*/
+  background-color: #F48FB2 !important;
+}
+
+::ng-deep.mat-input-element {
+  caret-color: #F48FB2 !important;
+  text-decoration-color: #F48FB2 !important;
+}
+
+.login-button {
+  background: #F48FB2;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  padding: 15px 35px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.login-reg-label {
+    display: inline;
+    color: white;
+}
+
+.login-reg-link {
+    display: inline;
+    color: #E5EE9C;
+    padding-left: 5px;
+}
