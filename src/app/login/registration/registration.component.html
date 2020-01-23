@@ -19,7 +19,7 @@
           <mat-grid-tile>
             <mat-form-field class="registration-input">
               <mat-label>Email Address</mat-label>
-              <input matInput formControlName="email" required>
+              <input matInput formControlName="email" #userEmail required>
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
@@ -31,20 +31,26 @@
           <mat-grid-tile>
             <mat-form-field class="registration-input">
               <mat-label>Password</mat-label>
-              <input matInput type="password" formControlName="password" required>
+              <input matInput type="password" formControlName="password" #userPassword required>
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-form-field class="registration-input">
               <mat-label>Confirm Password</mat-label>
-              <input matInput type="password" formControlName="password" required>
+              <input matInput type="password" formControlName="confirmPassword" required>
             </mat-form-field>
           </mat-grid-tile>
         </mat-grid-list>
       </form>
     </mat-card-content>
     <mat-card-actions>
-        <<button mat-raised-button class="registration-button" (click)="onClick()">Sign up</button>
+      <button mat-raised-button class="registration-button"
+      (click)="authService.SignUp(userEmail.value, userPassword.value)">Sign up</button>
     </mat-card-actions>
+    <mat-card-footer>
+      <div class="reg-login-label">
+        <span>Already have an account? <a class="redirect" routerLink="/login">Log In</a></span>
+      </div>
+    </mat-card-footer>
   </mat-card>
 </div>

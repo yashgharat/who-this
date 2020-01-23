@@ -1,18 +1,20 @@
 <div class="card-container">
-    <mat-card class="verification-card">
-        <mat-card-title class="verification-card-title">Welcome</mat-card-title>
-        <mat-card-content>
-            <h5 class="verification-subtitle">You should have gotten an email with a verification code</h5>
-            <p>
-              <mat-form-field class="verification-input" appearance="fill">
-                <mat-label>Verification Code</mat-label>
-                <input matInput>
-                <mat-icon matSuffix>remove_red_eye</mat-icon>
-              </mat-form-field>
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button class="verification-button">Verify</button>
-        </mat-card-actions>
-    </mat-card>
+  <mat-card class="verification-card mat-elevation-z16">
+    <mat-card-title class="verification-card-title">Welcome</mat-card-title>
+    <mat-card-content>
+      <h5 class="verification-subtitle">Thank you for registering</h5>
+      <div class="formGroup" *ngIf="authService.userData as user">
+        <p class="text-center">We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
+        <p class="text-center">Please check your email and click on the link to verfiy your email address.</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="verification-button" (click)="authService.SendVerificationMail()">Resend Verification</button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <div class="verification-lbl">
+        <span>Go back to<span class="redirect" routerLink="/login"> Sign in</span></span>
+      </div>
+    </mat-card-footer>
+  </mat-card>
 </div>

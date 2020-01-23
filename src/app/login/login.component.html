@@ -6,26 +6,25 @@
         <p>
           <mat-form-field class="login-input" appearance="fill">
             <mat-label>Username</mat-label>
-            <input matInput formControlName="email" required>
+            <input matInput formControlName="email" #userEmail required>
             <mat-hint>Email</mat-hint>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field class="login-input" appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'"required>
+            <input matInput placeholder="Password" #userPassword [type]="hide ? 'password' : 'text'"required>
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
         </p>
       </form>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button class="login-button" (click)="onClick()">Login</button>
+        <button mat-raised-button class="login-button" (click)="authService.SignIn(userEmail.value, userPassword.value)">Login</button>
     </mat-card-actions>
     <mat-card-footer>
-        <div class="container">
-            <p class="login-reg-label">Don't have an account?</p>
-            <a class="login-reg-link">Sign up!</a>
+        <div class="login-reg-label">
+          <span>Don't have an account?<a class="redirect" routerLink="/registration">Sign Up</a></span>
         </div>
     </mat-card-footer>
   </mat-card>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { AuthService } from "../shared/services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
 
   hide = true;
 
-  constructor() { }
+  constructor(
+      public authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
