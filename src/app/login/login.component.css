@@ -47,6 +47,7 @@ input {
   border-radius: 5px;
 }
 
+
 ::ng-deep .mat-focused mat-label {
   /*change color of label*/
   color: #F48FB2 !important;

@@ -1,0 +1,100 @@
+.app-bar {
+  background: #1E1E1E;
+  height: 110px;
+}
+
+.brand {
+  color: #E5EE9C;
+  font-size: 75px;
+  padding: 0px 10px;
+}
+
+.brand {
+  line-height: .35 !important;
+}
+
+.brand-fab-gap {
+  width: 20px;
+}
+
+.extended-fab-button {
+  margin-left: 75px;
+  width: unset;
+  padding: 0 30px;
+  border-radius: 29px;
+  background: #F48FB2;
+}
+
+.add-icon {
+  margin-right: 8px;
+  color: #000;
+}
+
+.extended-fab-button__text {
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.fab-search-gap {
+  width: 75px;
+}
+
+mat-label {
+  color: #80868B;
+}
+
+mat-hint {
+  color: #A0A0A0 !important;
+}
+
+.search-icon {
+  margin-top: 15px;
+  margin-right: 15px;
+  color: #80868B;
+}
+
+.search-bar {
+  margin-top: 22px;
+  width: 500px;
+}
+
+input {
+  color: white;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background: #2F2F2F;
+  border-radius: 5px;
+  padding: 0px 10px !important;
+}
+
+::ng-deep .mat-focused mat-label {
+  /*change color of label*/
+  color: #F48FB2 !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  background-color: #80868B !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #F48FB2 !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #F48FB2 !important;
+}
+
+::ng-deep.mat-form-field-element {
+  /*change color of underline when focused*/
+  background-color: #F48FB2 !important;
+}
+
+::ng-deep.mat-input-element {
+  caret-color: #F48FB2 !important;
+  text-decoration-color: #F48FB2 !important;
+}
