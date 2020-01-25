@@ -18,6 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationComponent } from './login/registration/registration.component';
 import { VerificationComponent } from './login/verification/verification.component';
 import { HomeComponent } from './home/home.component';
+import { CreateDialogComponent } from './home/create-dialog/create-dialog.component';
+import { CreateAccountDialogComponent } from './home/create-account-dialog/create-account-dialog.component';
+import { CreateContactDialogComponent } from './home/create-contact-dialog/create-contact-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegistrationComponent,
     VerificationComponent,
-    HomeComponent
+    HomeComponent,
+    CreateContactDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,7 @@ import { HomeComponent } from './home/home.component';
     AngularFirestoreModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateContactDialogComponent]
 })
 export class AppModule { }

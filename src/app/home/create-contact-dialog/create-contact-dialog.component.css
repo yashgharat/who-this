@@ -1,0 +1,36 @@
+.mat-card-container {
+  height: 100%;
+  width: 100;
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: #292929;
+}
+
+hr {
+  border-color: #595959;
+  margin-bottom: 20px;
+}
+
+.mat-dialog-title {
+  color: white;
+  text-transform: capitalize;
+}
+
+.name {
+  display: inline;
+}
+
+.circle {
+  height: 65px;
+  width: 65px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  display: table-cell;
+  vertical-align: middle;
+}
+.person_add {
+    margin-left: 15px;
+    font-size: 40px;
+}

@@ -50,9 +50,9 @@ mat-hint {
 }
 
 .search-icon {
-  margin-top: 15px;
-  margin-right: 15px;
   color: #80868B;
+  padding-right: 10px;
+  font-size: 24px !important;
 }
 
 .search-bar {
@@ -97,4 +97,12 @@ input {
 ::ng-deep.mat-input-element {
   caret-color: #F48FB2 !important;
   text-decoration-color: #F48FB2 !important;
+}
+
+.sign-out-button {
+    margin-left: 70px;
+    background: #000000;
+    color: #F48FB2;
+    width: 100px;
+    height: 45px;
 }
