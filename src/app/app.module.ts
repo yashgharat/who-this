@@ -7,6 +7,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment'
 import { AuthService } from "./shared/services/auth.service";
 
+import { FileUploadModule } from 'ng2-file-upload';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,7 +40,8 @@ import { CreateContactDialogComponent } from './home/create-contact-dialog/creat
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent],
