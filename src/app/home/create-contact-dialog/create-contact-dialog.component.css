@@ -39,15 +39,27 @@ hr {
     margin: 0px 30px;
 }
 
-::ng-deep .mat-form-field-infix {
-    border-top: 0px;
-}
-
 .extra-icon {
     font-size: 36px;
     margin-left: 20px;
+    margin-top: 7px;
+    color: #80868B;
+}
+
+mat-label {
+  color: #80868B;
+}
+
+input {
+  color: white;
 }
 
 .extra-input {
     margin: 0px 50px;
+}
+
+.action-button {
+    color: #F48FB2;
+    width: 75px;
+    height: 40px;
 }
