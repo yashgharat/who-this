@@ -31,6 +31,23 @@ hr {
   vertical-align: middle;
 }
 .person_add {
-    margin-left: 15px;
-    font-size: 40px;
+    margin-left: 13px;
+    font-size: 36px;
+}
+
+.name-input {
+    margin: 0px 30px;
+}
+
+::ng-deep .mat-form-field-infix {
+    border-top: 0px;
+}
+
+.extra-icon {
+    font-size: 36px;
+    margin-left: 20px;
+}
+
+.extra-input {
+    margin: 0px 50px;
 }

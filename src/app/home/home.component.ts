@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(CreateContactDialogComponent, {width: '700px', height: '400px'});
+    const dialogRef = this.dialog.open(CreateContactDialogComponent, {width: '700px', height: '470px'});
   }
 
 }
