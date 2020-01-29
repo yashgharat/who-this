@@ -21,25 +21,7 @@ hr {
   display: inline;
 }
 
-.circle {
-  height: 65px;
-  width: 65px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  display: table-cell;
-  vertical-align: middle;
-}
-.person_add {
-    margin-left: 13px;
-    font-size: 36px;
-}
-
-.name-input {
-    margin: 0px 30px;
-}
-
-.extra-icon {
+.contact-icon {
     font-size: 36px;
     margin-left: 20px;
     margin-top: 7px;
@@ -54,7 +36,7 @@ input {
   color: white;
 }
 
-.extra-input {
+.contact-input {
     margin: 0px 50px;
 }
 
