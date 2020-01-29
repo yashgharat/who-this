@@ -1,42 +1,41 @@
 <div class="mat-card-container">
   <h2 mat-dialog-title class="dialog-title">create new contact</h2>
-  <div mat-dialog-content class="content" style="height: calc(100% - 127px);">
+  <div mat-dialog-content class="content" align="center" style="height: calc(100% - 127px);">
     <hr>
-    <div class="name">
-        <span class="circle">
-            <mat-icon class="person_add">person_add</mat-icon>
+    <form [formGroup]="form">
+      <div class="name">
+        <span class="contact-span">
+          <mat-icon class="contact-icon">account_circle</mat-icon>
         </span>
-      <mat-form-field class="name-input">
-        <mat-label>First Name</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field class="name-input">
-        <mat-label>Last Name</mat-label>
-        <input matInput>
-      </mat-form-field>
-    </div>
-    <div class="phone">
-        <span class="extra-span">
-            <mat-icon class="extra-icon">phone</mat-icon>
+        <mat-form-field class="contact-input">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+      </div>
+      <div class="phone">
+        <span class="contact-span">
+          <mat-icon class="contact-icon">phone</mat-icon>
         </span>
-        <mat-form-field class="extra-input">
+        <mat-form-field class="contact-input">
           <mat-label>Phone Number</mat-label>
-          <input matInput>
+          <input matInput formControlName="phone" appPhoneMask>
         </mat-form-field>
-    </div>
-    <div class="email">
-        <span class="extra-span">
-            <mat-icon class="extra-icon">email</mat-icon>
+      </div>
+      <div class="email">
+        <span class="contact-span">
+          <mat-icon class="contact-icon">email</mat-icon>
         </span>
-        <mat-form-field class="extra-input">
+        <mat-form-field class="contact-input">
           <mat-label>Email</mat-label>
-          <input matInput>
+          <input formControlName="email" matInput>
         </mat-form-field>
-    </div>
+      </div>
+    </form>
+
     <hr class="bottom">
   </div>
   <div mat-dialog-actions align="end" class="actions">
-    <button mat-button class="action-button">Save</button>
+    <button mat-button class="action-button" (click)="onSave()">Save</button>
     <button mat-button class="action-button" (click)="onCancel()">Cancel</button>
   </div>
 </div>
