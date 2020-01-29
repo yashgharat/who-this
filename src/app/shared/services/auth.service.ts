@@ -107,14 +107,16 @@ export class AuthService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      // firstName: user.firstName,
-      // lastName: user.lastName,
-      // phoneNumber: user.phoneNumber,
       emailVerified: user.emailVerified
     }
+    this.userData = userData;
     return userRef.set(userData, {
       merge: true
     })
+}
+
+  getCurrentUser(): string{
+      return this.userData.uid;
   }
 
   // Sign out

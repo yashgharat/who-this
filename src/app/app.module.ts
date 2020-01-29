@@ -7,6 +7,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment'
 import { AuthService } from "./shared/services/auth.service";
 
+import { FileUploadModule } from 'ng2-file-upload';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +23,9 @@ import { VerificationComponent } from './login/verification/verification.compone
 import { HomeComponent } from './home/home.component';
 import { CreateContactDialogComponent } from './home/create-contact-dialog/create-contact-dialog.component';
 
+import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
+import { RequestHelperService } from './shared/services/request-helper.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +33,8 @@ import { CreateContactDialogComponent } from './home/create-contact-dialog/creat
     RegistrationComponent,
     VerificationComponent,
     HomeComponent,
-    CreateContactDialogComponent
+    CreateContactDialogComponent,
+    PhoneMaskDirective
   ],
   imports: [
     BrowserModule,
@@ -35,13 +42,16 @@ import { CreateContactDialogComponent } from './home/create-contact-dialog/creat
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FileUploadModule
   ],
-  providers: [],
+  providers: [RequestHelperService],
   bootstrap: [AppComponent],
-  entryComponents: [CreateContactDialogComponent]
+  entryComponents: [CreateContactDialogComponent],
+  exports: [PhoneMaskDirective]
 })
 export class AppModule { }
