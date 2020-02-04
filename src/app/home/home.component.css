@@ -149,7 +149,7 @@ mat-cell {
 }
 
 .mat-column-actions {
-  flex: 0 0 19% !important;
+  flex: 0 0 10% !important;
   min-width: 100px !important;
 }
 

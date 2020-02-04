@@ -1,7 +1,7 @@
 <mat-toolbar class="app-bar mat-elevation-z8">
   <mat-icon class="brand">account_circle</mat-icon>
   <span class="brand-fab-gap"></span>
-  <button class="extended-fab-button" mat-fab (click)="openDialog()">
+  <button class="extended-fab-button" mat-fab (click)="createContact()">
     <mat-icon class="add-icon">add</mat-icon>
     <span class="extended-fab-button__text">Create</span>
   </button>
@@ -13,7 +13,7 @@
     </mat-form-field>
   </div>
   <button class="sign-out-button mat-elevation-z8" mat-stroked-button>
-    <span class="sign-out-label" (click)="contactClick()">sign out</span>
+    <span class="sign-out-label">sign out</span>
   </button>
 </mat-toolbar>
 <!-- authService.SignOut() -->
@@ -58,7 +58,7 @@
       </ng-container>
     </div>
     <mat-header-row class="mat-elevation-z16" *matHeaderRowDef="tableColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+    <mat-row (click)="contactClick(row)" *matRowDef="let row; columns: tableColumns"></mat-row>
   </mat-table>
 
 </div>

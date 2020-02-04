@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CreateContactDialogComponent } from './create-contact-dialog/create-contact-dialog.component'
+import { ShowContactDialogComponent } from './show-contact-dialog/show-contact-dialog.component'
 import { RequestHelperService } from '../shared/services/request-helper.service'
 import { DataSource } from '@angular/cdk/collections';
 import { Contact, getContact } from '../shared/services/contact'
@@ -50,10 +51,11 @@ export class HomeComponent implements OnInit, AfterContentInit {
     })();
   }
 
-  contactClick() {
+  contactClick(row: any) {
+    const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px' });
   }
 
-  openDialog(): void {
+  createContact(): void {
     const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px' });
   }
 
