@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
   }
 
   contactClick(row: any) {
-    const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px' });
+    const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px' , data: {contact: row}});
   }
 
   createContact(): void {

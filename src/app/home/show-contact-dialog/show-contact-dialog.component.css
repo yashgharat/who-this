@@ -1,0 +1,54 @@
+.mat-card-container {
+  height: 100%;
+  width: 100;
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: #292929;
+}
+
+.title-text{
+    display: inline;
+    margin-left: 50px;
+    font-size: 30px;
+    color: white;
+}
+
+.contact-icon {
+    font-size: 50px;
+    color: #F48FB2;
+}
+
+.dialog-title {
+    display: inline;
+}
+
+.more-button {
+    font-size: 15px;
+    color: white;
+    float: right;
+    display: inline;
+}
+
+hr {
+  border-color: #595959;
+  margin-bottom: 20px;
+}
+
+.info-row {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.info-icon {
+    margin-left: 10px;
+    font-size: 30px;
+    display: inline;
+    color: #80868B;
+}
+
+.info-content {
+    display: inline;
+    color: white;
+    margin-left: 50px;
+}

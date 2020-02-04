@@ -1,8 +1,31 @@
 <div class="mat-card-container">
-  <h1 mat-dialog-title class="dialog-title">Jane Do2</h1>
-  <div mat-dialog-content class="content" align="center" style="height: calc(100% - 127px);">
+  <div class="card-header">
+    <div mat-dialog-title class="dialog-title">
+      <mat-icon class="contact-icon">account_circle</mat-icon>
+      <h3 class="title-text">{{name}}</h3>
+    </div>
+    <button class="more-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </div>
+  <div mat-dialog-content class="content" style="height: calc(100% - 127px);">
     <hr>
-
+    <div class="info-row">
+        <mat-icon class="info-icon">phone</mat-icon>
+        <p class="info-content">{{number}}</p>
+    </div>
+    <div class="info-row">
+        <mat-icon class="info-icon">email</mat-icon>
+        <p class="info-content">{{email}}</p>
+    </div>
     <hr class="bottom">
   </div>
   <div mat-dialog-actions align="end" class="actions">
