@@ -4,7 +4,7 @@ import { CreateContactDialogComponent } from './create-contact-dialog/create-con
 import { ShowContactDialogComponent } from './show-contact-dialog/show-contact-dialog.component'
 import { RequestHelperService } from '../shared/services/request-helper.service'
 import { DataSource } from '@angular/cdk/collections';
-import { Contact, getContact } from '../shared/services/contact'
+import { Contact, sendContact } from '../shared/services/contact'
 import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from '../shared/services/auth.service'
@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
   tableColumns: string[] = ['dp','name', 'email', 'phone', 'actions'];
   dataSource = []
-  private loading = false;
   private flag = false;
+  private selected: any;
 
   constructor(
     public dialog: MatDialog,
@@ -46,17 +46,38 @@ export class HomeComponent implements OnInit, AfterContentInit {
           (data) => {
             this.dataSource = data;
             console.log(this.dataSource);
-
           });
     })();
   }
 
   contactClick(row: any) {
-    const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px' , data: {contact: row}});
+      if(!this.flag){
+        const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px' , data: {contact: row}});
+        }
+        else{
+            this.selected = row;
+            this.flag = false;
+        }
   }
 
   createContact(): void {
     const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px' });
+  }
+
+  deleteContact() {
+    console.log(this.selected);
+
+    this.client.deleteContact(this.authService.getCurrentUser(), this.selected.id)
+    .subscribe(
+        (data: Contact) => {
+            console.log(data);
+        }
+    );
+    window.location.reload();
+  }
+
+  disablePop() {
+      this.flag = true;
   }
 
   delay(ms: number) {

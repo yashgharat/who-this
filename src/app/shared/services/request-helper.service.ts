@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Contact, getContact } from './contact'
+import { sendContact, Contact } from './contact'
 import { interval} from 'rxjs/observable/interval';
 import { map, flatMap, timeout, takeWhile } from 'rxjs/operators';
 
@@ -14,9 +14,9 @@ export class RequestHelperService {
   constructor(private client: HttpClient) {
   }
 
-  createContact(contact: Contact): Observable<Contact> {
+  createContact(user: string, contact: sendContact): Observable<sendContact> {
     if (contact.contact_name !== "") {
-      return this.client.post<Contact>(this.baseURL + 'create-contact', contact, {
+      return this.client.post<sendContact>(this.baseURL + 'create-contact/' + user, contact, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
         })
@@ -27,8 +27,17 @@ export class RequestHelperService {
     }
   }
 
-  getContacts(user: string): Observable<getContact[]> {
-    return this.client.get<getContact[]>(this.baseURL + "read/" + user)
+  getContacts(user: string): Observable<Contact[]> {
+    return this.client.get<Contact[]>(this.baseURL + "read/" + user)
+  }
+
+  deleteContact(user: string, contactID: string): Observable<Contact>{
+      if (contactID !== "") {
+        return this.client.delete<Contact>(this.baseURL + 'delete/' + user + "/" + contactID);
+      }
+      else {
+        console.log("null requestHelper in deleteHelper()");
+      }
   }
 
 

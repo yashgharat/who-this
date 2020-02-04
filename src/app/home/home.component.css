@@ -124,7 +124,7 @@ mat-row:hover {
 }
 
 mat-cell {
-  color: #F48FB2;
+    color: white;
 }
 
 .mat-column-dp {
@@ -144,12 +144,12 @@ mat-cell {
 }
 
 .mat-column-phone {
-  flex: 0 0 25% !important;
+  flex: 0 0 20% !important;
   min-width: 100px !important;
 }
 
 .mat-column-actions {
-  flex: 0 0 10% !important;
+  flex: 0 0 4% !important;
   min-width: 100px !important;
 }
 

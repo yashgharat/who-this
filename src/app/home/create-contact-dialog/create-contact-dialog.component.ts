@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HomeComponent } from '../home.component'
 import { RequestHelperService } from '../../shared/services/request-helper.service'
-import { Contact } from '../../shared/services/contact'
+import { sendContact } from '../../shared/services/contact'
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../shared/services/auth.service'
 
@@ -36,19 +36,21 @@ export class CreateContactDialogComponent implements OnInit {
   }
 
   onSave(){
-      const newContact: Contact = {
-          "user": this.authService.getCurrentUser(),
+      const newContact: sendContact = {
           "contact_name": this.form.controls['name'].value,
           "contact_number": this.form.controls['phone'].value,
           "contact_email": this.form.controls['email'].value
       }
 
-    this.requestHelper.createContact(newContact).subscribe(
-        (data: Contact) => {
-            console.log(data);
-            this.dialogRef.close();
-        }
-    );
+      console.log(newContact);
+
+    this.requestHelper.createContact(this.authService.getCurrentUser(), newContact)
+        .subscribe(
+            (data: sendContact) => {
+                console.log(data);
+                this.dialogRef.close();
+            }
+        );
 
   }
 

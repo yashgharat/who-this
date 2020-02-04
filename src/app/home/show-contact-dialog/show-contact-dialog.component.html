@@ -11,7 +11,7 @@
       <button mat-menu-item>
         <span>Edit</span>
       </button>
-      <button mat-menu-item>
+      <button (click)="onDelete()" mat-menu-item>
         <span>Delete</span>
       </button>
     </mat-menu>
@@ -26,8 +26,5 @@
         <mat-icon class="info-icon">email</mat-icon>
         <p class="info-content">{{email}}</p>
     </div>
-    <hr class="bottom">
-  </div>
-  <div mat-dialog-actions align="end" class="actions">
   </div>
 </div>
