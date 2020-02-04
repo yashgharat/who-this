@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Contact, getContact } from './contact'
+import { interval} from 'rxjs/observable/interval';
+import { map, flatMap, timeout, takeWhile } from 'rxjs/operators';
 
 
 @Injectable({
@@ -26,7 +28,7 @@ export class RequestHelperService {
   }
 
   getContacts(user: string): Observable<getContact[]> {
-    return this.client.get<getContact[]>(this.baseURL + "read/" + user);
+    return this.client.get<getContact[]>(this.baseURL + "read/" + user)
   }
 
 

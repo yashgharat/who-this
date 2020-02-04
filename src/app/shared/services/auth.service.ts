@@ -33,10 +33,10 @@ export class AuthService {
   }
 
   ngOnInit() {
-      this.afAuth.authState.subscribe(user => {
-          if(user)
-            this.userData = user;
-      });
+    this.afAuth.authState.subscribe(user => {
+      if (user)
+        this.userData = user;
+    });
   }
 
   // Sign in with email/password
