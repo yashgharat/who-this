@@ -21,11 +21,14 @@ export class RequestHelperService {
       })
     }
     else {
-        console.log("null requestHelper in postHelper()");
+      console.log("null requestHelper in postHelper()");
     }
   }
 
-  getContacts(user: string): Observable<getContact> {
-      return this.client.get<getContact>(this.baseURL + "read/" + user);
+  getContacts(user: string): Observable<getContact[]> {
+    return this.client.get<getContact[]>(this.baseURL + "read/" + user);
   }
+
+
+
 }

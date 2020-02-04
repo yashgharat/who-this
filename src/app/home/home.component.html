@@ -13,6 +13,28 @@
     </mat-form-field>
   </div>
   <button class="sign-out-button mat-elevation-z8" mat-stroked-button>
-    <span class="sign-out-label" (click)="authService.SignOut()">sign out</span>
+    <span class="sign-out-label" (click)="contactClick()">sign out</span>
   </button>
 </mat-toolbar>
+<!-- authService.SignOut() -->
+
+<div class="container">
+
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let contact">{{contact.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let contact">{{contact.email}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
+      <mat-cell *matCellDef="let contact">{{contact.phone}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+  </mat-table>
+
+</div>

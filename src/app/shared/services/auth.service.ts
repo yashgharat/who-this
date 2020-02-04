@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, OnInit, NgZone } from '@angular/core';
 import { User } from "../services/user";
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  public uid: string;
 
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
@@ -21,14 +22,21 @@ export class AuthService {
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe(user => {
       if (user) {
-        this.userData = user;
+        this.userData = user
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user'));
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
       }
-    })
+    });
+  }
+
+  ngOnInit() {
+      this.afAuth.authState.subscribe(user => {
+          if(user)
+            this.userData = user;
+      });
   }
 
   // Sign in with email/password
@@ -60,19 +68,19 @@ export class AuthService {
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
     return this.afAuth.auth.currentUser.sendEmailVerification()
-    .then(() => {
-      this.router.navigate(['verification']);
-    })
+      .then(() => {
+        this.router.navigate(['verification']);
+      })
   }
 
   // Reset Forgot password
   ForgotPassword(passwordResetEmail) {
     return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
-    .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
-    }).catch((error) => {
-      window.alert(error)
-    })
+      .then(() => {
+        window.alert('Password reset email sent, check your inbox.');
+      }).catch((error) => {
+        window.alert(error)
+      })
   }
 
   // Returns true when user is looged in and email is verified
@@ -89,14 +97,14 @@ export class AuthService {
   // Auth logic to run auth providers
   AuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
-    .then((result) => {
-       this.ngZone.run(() => {
+      .then((result) => {
+        this.ngZone.run(() => {
           this.router.navigate(['home']);
         })
-      this.SetUserData(result.user);
-    }).catch((error) => {
-      window.alert(error)
-    })
+        this.SetUserData(result.user);
+      }).catch((error) => {
+        window.alert(error)
+      })
   }
 
   /* Setting up user data when sign in with username/password,
@@ -113,10 +121,10 @@ export class AuthService {
     return userRef.set(userData, {
       merge: true
     })
-}
+  }
 
-  getCurrentUser(): string{
-      return this.userData.uid;
+  getCurrentUser(): string {
+    return this.userData.uid;
   }
 
   // Sign out

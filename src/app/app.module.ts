@@ -24,7 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { CreateContactDialogComponent } from './home/create-contact-dialog/create-contact-dialog.component';
 
 import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
-import { RequestHelperService } from './shared/services/request-helper.service'
+import { RequestHelperService } from './shared/services/request-helper.service';
 
 @NgModule({
   declarations: [

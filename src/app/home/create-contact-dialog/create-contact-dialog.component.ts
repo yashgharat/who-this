@@ -31,6 +31,7 @@ export class CreateContactDialogComponent implements OnInit {
   }
 
   onCancel() {
+      console.log(this.authService.getCurrentUser());
       this.dialogRef.close();
   }
 

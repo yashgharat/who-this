@@ -106,3 +106,13 @@ input {
     width: 100px;
     height: 45px;
 }
+
+
+
+mat-header-row {
+    background:#545454;
+}
+
+mat-row{
+    color: #E5EE9C;
+}
