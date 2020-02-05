@@ -7,16 +7,17 @@ import { LoginComponent } from './login/login.component'
 import { RegistrationComponent } from './login/registration/registration.component'
 import { VerificationComponent } from './login/verification/verification.component'
 import { HomeComponent } from './home/home.component'
+import { SecureInnerPagesGuard } from './shared/guard/secure-inner-pages.guard'
 import { AuthGuard } from "./shared/guard/auth.guard";
 
 
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'registration', component: RegistrationComponent},
-    { path: 'verification', component: VerificationComponent},
-    { path: 'home', component: HomeComponent}
+    { path: 'login', component: LoginComponent, canActivate : [ SecureInnerPagesGuard ] },
+    { path: 'registration', component: RegistrationComponent, canActivate : [ SecureInnerPagesGuard ] },
+    { path: 'verification', component: VerificationComponent, canActivate : [ SecureInnerPagesGuard ] },
+    { path: 'home', component: HomeComponent, canActivate : [ AuthGuard ]}
 
 
 ];
