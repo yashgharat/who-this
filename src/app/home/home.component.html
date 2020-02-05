@@ -1,11 +1,11 @@
 <mat-toolbar class="app-bar mat-elevation-z8" fxLayout="row" fxLayoutGap>
   <mat-icon class="brand" (click)="showMe()">account_circle</mat-icon>
-  <span fxFlex="5"></span>
+  <span fxFlex="10"></span>
   <button class="extended-fab-button" mat-fab (click)="createContact()">
     <mat-icon class="add-icon">add</mat-icon>
     <span class="extended-fab-button__text">Create</span>
   </button>
-  <span fxFlex="15"></span>
+  <span fxFlex="10"></span>
   <div class="container">
     <mat-form-field class="search-bar" appearance="fill">
       <input [formControl]="searchControl" type="text" placeholder="Search" aria-label="Number" matInput [matAutocomplete]="auto">
@@ -17,10 +17,11 @@
       <mat-icon class="search-icon" matPrefix>search</mat-icon>
     </mat-form-field>
   </div>
-  <span fxFlex="15"></span>
+  <span fxFlex="5"></span>
   <button class="sign-out-button mat-elevation-z8" (click)="authService.SignOut()" mat-stroked-button>
     <span class="sign-out-label">sign out</span>
   </button>
+  <span fxFlex="5"></span>
 </mat-toolbar>
 <!-- authService.SignOut() -->
 
