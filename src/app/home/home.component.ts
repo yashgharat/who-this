@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
           (data) => {
             this.dataSource = data;
             console.log(this.dataSource);
-          });
+        });
     })();
   }
 
@@ -62,6 +62,10 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
   createContact(): void {
     const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px' });
+  }
+
+  editContact() {
+      const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px' , data: this.selected});
   }
 
   deleteContact() {

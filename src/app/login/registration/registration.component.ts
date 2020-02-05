@@ -26,4 +26,13 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
   }
 
+  signUp() {
+
+      let first_name = this.registrationForm.controls['first_name'];
+      let last_name = this.registrationForm.controls['last_name'];
+      let email = this.registrationForm.controls['email'];
+      let number = this.registrationForm.controls['phone'];
+      this.authService.SignUp(userEmail.value, userPassword.value)
+  }
+
 }
