@@ -14,7 +14,6 @@
 }
 
 .extended-fab-button {
-  margin-left: 75px;
   width: unset;
   padding: 0 30px;
   border-radius: 29px;
@@ -93,7 +92,6 @@ input {
 
 .sign-out-button {
     float: right !import;
-    margin-left: 70px;
     background: #000000;
     color: #F48FB2;
     width: 100px;
