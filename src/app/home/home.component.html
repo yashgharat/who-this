@@ -1,23 +1,24 @@
-<mat-toolbar class="app-bar mat-elevation-z8" fxLayout="row" fxLayoutAlign="start center">
+<mat-toolbar class="app-bar mat-elevation-z8" fxLayout="row" fxLayoutGap>
   <mat-icon class="brand">account_circle</mat-icon>
+  <span fxFlex="5"></span>
   <button class="extended-fab-button" mat-fab (click)="createContact()">
     <mat-icon class="add-icon">add</mat-icon>
     <span class="extended-fab-button__text">Create</span>
   </button>
-  <span fxFlex class="fxFlex fab-search-gap"></span>
+  <span fxFlex="15"></span>
   <div class="container">
     <mat-form-field class="search-bar" appearance="fill">
       <input [formControl]="searchControl" type="text" placeholder="Search" aria-label="Number" matInput [matAutocomplete]="auto">
-  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <mat-option *ngFor="let contact of filteredContacts | async; let index = index" [value]="contact.name" (click) = "contactClick(contact)">
-      {{ contact.name | titlecase}}
-    </mat-option>
-</mat-autocomplete>
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let contact of filteredContacts | async; let index = index" [value]="contact.name" (click)="contactClick(contact)">
+          {{ contact.name | titlecase}}
+        </mat-option>
+      </mat-autocomplete>
       <mat-icon class="search-icon" matPrefix>search</mat-icon>
     </mat-form-field>
   </div>
-  <span class="fxFlex brand-fab-gap"></span>
-  <button class="sign-out-button mat-elevation-z8" (click)="authService.SignOut()"mat-stroked-button>
+  <span fxFlex="15"></span>
+  <button class="sign-out-button mat-elevation-z8" (click)="authService.SignOut()" mat-stroked-button>
     <span class="sign-out-label">sign out</span>
   </button>
 </mat-toolbar>
@@ -52,7 +53,7 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
         <mat-cell *matCellDef="let contact">
-          <button mat-icon-button (click)="disablePop()"[matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <button mat-icon-button (click)="disablePop()" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
