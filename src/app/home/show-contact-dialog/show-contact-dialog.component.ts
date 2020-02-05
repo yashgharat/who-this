@@ -14,10 +14,10 @@ import { CreateContactDialogComponent} from '../create-contact-dialog/create-con
 })
 export class ShowContactDialogComponent implements OnInit {
 
-private name: string;
-private email: string;
-private number: string;
-private id: string;
+public name: string;
+public email: string;
+public number: string;
+public id: string;
 
 
   constructor(

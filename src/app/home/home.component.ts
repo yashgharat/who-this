@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
   constructor(
     public dialog: MatDialog,
     private client: RequestHelperService,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

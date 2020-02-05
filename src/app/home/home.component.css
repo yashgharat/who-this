@@ -151,7 +151,6 @@ mat-cell {
   padding: 0px !important;
 }
 ::ng-deep .mat-menu-item {
-  border:  !important;
   border-color: #2F2F2F !important;
   color: white;
   line-height: 20px !important;
