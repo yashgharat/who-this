@@ -16,6 +16,7 @@ import {
   MatTableModule,
   MatProgressSpinnerModule,
   MatCardModule,
+  MatAutocompleteModule,
   MatMenuModule
 } from '@angular/material';
 
@@ -35,6 +36,7 @@ import {
     MatCardModule,
     MatDialogModule,
     MatTableModule,
+    MatAutocompleteModule,
     MatMenuModule],
   exports: [CommonModule,
     MatButtonModule,
@@ -51,6 +53,7 @@ import {
     MatCardModule,
     MatDialogModule,
     MatTableModule,
+    MatAutocompleteModule,
     MatMenuModule],
 })
 export class MaterialModule { }

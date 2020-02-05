@@ -166,3 +166,15 @@ mat-cell {
 ::ng-deep .mat-menu-item:hover {
   background-color: #484848 !important;
 }
+
+::ng-deep .mat-option {
+  background-color: black !important;
+}
+
+::ng-deep .mat-option-text {
+  color: white !important;
+}
+
+::ng-deep .mat-option:hover {
+  background-color: #4C4C4C !important;
+}

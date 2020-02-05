@@ -8,7 +8,12 @@
   <span class="fab-search-gap"></span>
   <div class="container">
     <mat-form-field class="search-bar" appearance="fill">
-      <input matInput placeholder="Search">
+      <input [formControl]="searchControl" type="text" placeholder="Search" aria-label="Number" matInput [matAutocomplete]="auto">
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let contact of filteredContacts | async; let index = index" [value]="contact.name" (click) = "contactClick(contact)">
+      {{ contact.name | titlecase}}
+    </mat-option>
+</mat-autocomplete>
       <mat-icon class="search-icon" matPrefix>search</mat-icon>
     </mat-form-field>
   </div>

@@ -5,7 +5,17 @@ import { ShowContactDialogComponent } from './show-contact-dialog/show-contact-d
 import { RequestHelperService } from '../shared/services/request-helper.service'
 import { DataSource } from '@angular/cdk/collections';
 import { Contact, sendContact } from '../shared/services/contact'
-import { Observable } from 'rxjs/Observable';
+import { Observable, observable, of } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import {
+  startWith,
+  map,
+  debounceTime,
+  mergeMapTo,
+  mergeMap,
+  switchMap,
+  catchError
+} from 'rxjs/operators';
 
 import { AuthService } from '../shared/services/auth.service'
 import { MatTableDataSource } from '@angular/material';
@@ -22,6 +32,9 @@ export class HomeComponent implements OnInit, AfterContentInit {
   private flag = false;
   private selected: any;
 
+  public filteredContacts: Observable<Contact> = null;
+  public searchControl = new FormControl();
+
   constructor(
     public dialog: MatDialog,
     private client: RequestHelperService,
@@ -30,6 +43,22 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
   ngOnInit() {
     this.getContacts();
+
+    this.filteredContacts = this.searchControl.valueChanges.pipe(
+      startWith(''),
+      // delay emits
+      debounceTime(300),
+      // use switch map so as to cancel previous subscribed events, before creating new once
+      switchMap(value => {
+        if (value !== '') {
+          // lookup from github
+          return this.searchContact(value);
+        } else {
+          // if no value is pressent, return null
+          return of(null);
+        }
+      })
+    );
   }
 
   ngAfterContentInit() {
@@ -54,6 +83,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
     if (!this.flag) {
       const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px', data: { contact: row } });
       dialogRef.afterClosed().subscribe(() => {
+        this.searchControl.setValue("");
         this.getContacts();
       });
     }
@@ -89,6 +119,17 @@ export class HomeComponent implements OnInit, AfterContentInit {
           this.getContacts();
         }
       );
+  }
+
+  searchContact(query: string): Observable<Contact> {
+    return this.client.searchContact(this.authService.getCurrentUser(), query).pipe(
+      // map the item property of the github results as our return object
+      map(results => results),
+      // catch errors
+      catchError(_ => {
+        return of(null);
+      })
+    );
   }
 
   disablePop() {

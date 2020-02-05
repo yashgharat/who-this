@@ -56,6 +56,10 @@ export class RequestHelperService {
       return this.client.put<sendContact>(this.baseURL + 'update/' + user + "/" + contactID, contact);
   }
 
+  searchContact(user: string, query: string): Observable<Contact[]>{
+    return this.client.get<Contact[]>(this.baseURL + 'read/' + user + '/' + query);
+  }
+
 
 
 }
