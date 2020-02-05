@@ -51,15 +51,9 @@ export class RequestHelperService {
     }
   }
 
-  updateContact(user: string, contact: sendContact): Observable<sendContact> {
-    console.log(contact);
-    if (contact.contact_name !== "") {
-      return this.client.put<sendContact>(this.baseURL + 'update/' + user, contact, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      });
-    }
+  updateContact(user: string, contactID: string, contact: sendContact): Observable<sendContact> {
+    console.log("in updateContact", contact);
+      return this.client.put<sendContact>(this.baseURL + 'update/' + user + "/" + contactID, contact);
   }
 
 

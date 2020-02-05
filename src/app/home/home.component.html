@@ -12,7 +12,7 @@
       <mat-icon class="search-icon" matPrefix>search</mat-icon>
     </mat-form-field>
   </div>
-  <button class="sign-out-button mat-elevation-z8" mat-stroked-button>
+  <button class="sign-out-button mat-elevation-z8" (click)="authService.SignOut()"mat-stroked-button>
     <span class="sign-out-label">sign out</span>
   </button>
 </mat-toolbar>

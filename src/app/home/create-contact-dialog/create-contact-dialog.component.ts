@@ -54,7 +54,7 @@ export class CreateContactDialogComponent implements OnInit {
         "contact_name": this.form.controls['name'].value,
         "contact_number": this.form.controls['phone'].value,
         "contact_email": this.form.controls['email'].value
-      }
+      };
 
       console.log(newContact);
     if (!this.flag) {
@@ -68,7 +68,7 @@ export class CreateContactDialogComponent implements OnInit {
         );
     }
     else {
-      this.requestHelper.updateContact(this.authService.getCurrentUser(), newContact)
+      this.requestHelper.updateContact(this.authService.getCurrentUser(), this.data.id, newContact)
         .subscribe(
           (data: sendContact) => {
             this.dialogRef.close();

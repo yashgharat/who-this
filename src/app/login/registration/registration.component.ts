@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from "../../shared/services/auth.service";
+import { RequestHelperService } from '../../shared/services/request-helper.service'
+import { createUser } from '../../shared/services/user'
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'app-registration',
@@ -20,7 +24,8 @@ export class RegistrationComponent implements OnInit {
   });
 
   constructor(
-      public authService: AuthService
+    public authService: AuthService,
+    public client: RequestHelperService
   ) { }
 
   ngOnInit() {
@@ -28,11 +33,34 @@ export class RegistrationComponent implements OnInit {
 
   signUp() {
 
-      let first_name = this.registrationForm.controls['first_name'];
-      let last_name = this.registrationForm.controls['last_name'];
-      let email = this.registrationForm.controls['email'];
-      let number = this.registrationForm.controls['phone'];
-      this.authService.SignUp(userEmail.value, userPassword.value)
+    let varfirst_name = this.registrationForm.controls['first_name'].value;
+    let varlast_name = this.registrationForm.controls['last_name'].value;
+    let varemail = this.registrationForm.controls['email'].value;
+    let varnumber = this.registrationForm.controls['phone'].value;
+    let varpassword = this.registrationForm.controls['password'].value;
+    this.authService.SignUp(varemail, varpassword);
+
+    const newUser: createUser = {
+      "uid": this.authService.getCurrentUser(),
+      "email": varemail,
+      "first_name": varfirst_name,
+      "last_name": varlast_name,
+      "number": varnumber
+    };
+      (async () => {
+        // Do something before delay
+        console.log('before delay')
+        await this.delay(4000);
+        this.client.createUser(newUser)
+          .subscribe(
+            (data) => {
+              console.log(data);
+            });
+      })();
+
   }
 
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 }

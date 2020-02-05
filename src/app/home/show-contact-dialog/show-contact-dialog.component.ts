@@ -4,6 +4,8 @@ import { RequestHelperService } from '../../shared/services/request-helper.servi
 import { Contact } from '../../shared/services/contact'
 import { AuthService } from '../../shared/services/auth.service'
 
+import { CreateContactDialogComponent} from '../create-contact-dialog/create-contact-dialog.component'
+
 
 @Component({
   selector: 'app-show-contact-dialog',
@@ -20,6 +22,7 @@ private id: string;
 
   constructor(
       @Inject(MAT_DIALOG_DATA) public data: any,
+      public dialog: MatDialog,
       private dialogRef: MatDialogRef<ShowContactDialogComponent>,
       private requestHelper: RequestHelperService,
       private authService: AuthService
@@ -33,9 +36,13 @@ private id: string;
 
   }
 
+  onEdit(){
+    const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px', data: this.data.contact });
+    dialogRef.afterClosed().subscribe(() => {
+    });
+  }
+
   onDelete(){
-
-
     this.requestHelper.deleteContact(this.authService.getCurrentUser(), this.id)
     .subscribe(
         (data: Contact) => {

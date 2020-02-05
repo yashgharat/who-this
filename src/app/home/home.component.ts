@@ -17,7 +17,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class HomeComponent implements OnInit, AfterContentInit {
 
-  tableColumns: string[] = ['dp','name', 'email', 'phone', 'actions'];
+  tableColumns: string[] = ['dp', 'name', 'email', 'phone', 'actions'];
   dataSource = []
   private flag = false;
   private selected: any;
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
   }
 
-  getContacts(){
+  getContacts() {
     (async () => {
       // Do something before delay
       console.log('before delay')
@@ -46,42 +46,53 @@ export class HomeComponent implements OnInit, AfterContentInit {
           (data) => {
             this.dataSource = data;
             console.log(this.dataSource);
-        });
+          });
     })();
   }
 
   contactClick(row: any) {
-      if(!this.flag){
-        const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px' , data: {contact: row}});
-        }
-        else{
-            this.selected = row;
-            this.flag = false;
-        }
+    if (!this.flag) {
+      const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px', data: { contact: row } });
+      dialogRef.afterClosed().subscribe(() => {
+        this.getContacts();
+      });
+    }
+    else {
+      this.selected = row;
+      this.flag = false;
+    }
   }
 
   createContact(): void {
     const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px' });
+    dialogRef.afterClosed().subscribe(() => {
+      this.getContacts();
+    });
+
+
   }
 
   editContact() {
-      const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px' , data: this.selected});
+    const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px', data: this.selected });
+    dialogRef.afterClosed().subscribe(() => {
+      this.getContacts();
+    });
   }
 
   deleteContact() {
     console.log(this.selected);
 
     this.client.deleteContact(this.authService.getCurrentUser(), this.selected.id)
-    .subscribe(
+      .subscribe(
         (data: Contact) => {
-            console.log(data);
+          console.log(data);
+          this.getContacts();
         }
-    );
-    window.location.reload();
+      );
   }
 
   disablePop() {
-      this.flag = true;
+    this.flag = true;
   }
 
   delay(ms: number) {
