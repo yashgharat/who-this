@@ -79,6 +79,11 @@ export class HomeComponent implements OnInit, AfterContentInit {
     })();
   }
 
+
+  showMe(){
+
+  }
+
   contactClick(row: any) {
     if (!this.flag) {
       const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px', data: { contact: row } });
