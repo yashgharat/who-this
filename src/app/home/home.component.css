@@ -100,6 +100,7 @@ input {
 }
 
 .sign-out-button {
+    float: right !import;
     margin-left: 70px;
     background: #000000;
     color: #F48FB2;

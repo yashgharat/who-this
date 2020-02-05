@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module'
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -49,7 +50,8 @@ import { ShowContactDialogComponent } from './home/show-contact-dialog/show-cont
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FileUploadModule
+    FileUploadModule,
+    FlexLayoutModule
   ],
   providers: [RequestHelperService],
   bootstrap: [AppComponent],
