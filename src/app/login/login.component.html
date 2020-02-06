@@ -20,9 +20,10 @@
       </form>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button class="login-button" (click)="authService.SignIn(userEmail.value, userPassword.value)">Login</button>
+        <button mat-raised-button class="login-button" (click)="onSignIn()">Login</button>
     </mat-card-actions>
     <mat-card-footer>
+        <p>{{message}}</p>
         <div class="login-reg-label">
           <span>Don't have an account?<a class="redirect" routerLink="/registration">Sign Up</a></span>
         </div>

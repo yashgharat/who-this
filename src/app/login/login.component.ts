@@ -9,6 +9,8 @@ import { AuthService } from "../shared/services/auth.service";
 })
 export class LoginComponent implements OnInit {
 
+  public message = "";
+
   signinForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.required, Validators.min(6)])
@@ -23,8 +25,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick() {
-      console.log("submit");
+  onSignIn() {
+      this.message = this.authService.SignIn(this.signinForm.controls['email'].value, this.signinForm.controls['password'].value);
   }
 
 }
