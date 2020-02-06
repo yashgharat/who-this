@@ -50,7 +50,7 @@ export class AuthService {
         });
         this.SetUserData(result.user);
       }).catch((error) => {
-        return error.message;
+        window.alert(error.message);
       })
   }
 

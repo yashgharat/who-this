@@ -27,6 +27,10 @@ export class RequestHelperService {
     }
   }
 
+  getUser(user: string): Observable<Contact>{
+      return this.client.get<Contact>(this.baseURL + "get-user/" + user);
+  }
+
   createContact(user: string, contact: sendContact): Observable<sendContact> {
     if (contact.contact_name !== "") {
       return this.client.post<sendContact>(this.baseURL + 'create-contact/' + user, contact, {

@@ -40,17 +40,17 @@ export class RegistrationComponent implements OnInit {
     let varpassword = this.registrationForm.controls['password'].value;
     this.authService.SignUp(varemail, varpassword);
 
-    const newUser: updateUser = {
-      "uid": this.authService.getCurrentUser(),
-      "email": varemail,
-      "first_name": varfirst_name,
-      "last_name": varlast_name,
-      "number": varnumber
-    };
       (async () => {
         // Do something before delay
         console.log('before delay')
         await this.delay(2000);
+        const newUser: updateUser = {
+          "uid": this.authService.getCurrentUser(),
+          "email": varemail,
+          "first_name": varfirst_name,
+          "last_name": varlast_name,
+          "number": varnumber
+        };
         this.client.updateUser(newUser)
           .subscribe(
             (data) => {

@@ -30,6 +30,7 @@ public id: string;
   ) { }
 
   ngOnInit() {
+      console.log(this.data);
       this.name = this.data.contact.name;
       this.email = this.data.contact.email;
       this.number = this.data.contact.number;

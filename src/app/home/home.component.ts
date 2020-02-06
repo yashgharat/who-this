@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
   ) { }
 
   ngOnInit() {
-    this.getContacts();
+    this.getContacts(2000);
 
     this.filteredContacts = this.searchControl.valueChanges.pipe(
       startWith(''),
@@ -66,11 +66,11 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
   }
 
-  getContacts() {
+  getContacts(ms: int) {
     (async () => {
       // Do something before delay
       console.log('before delay')
-      await this.delay(500);
+      await this.delay(ms);
       this.client.getContacts(this.authService.getCurrentUser())
         .subscribe(
           (data) => {
@@ -78,6 +78,27 @@ export class HomeComponent implements OnInit, AfterContentInit {
             console.log(this.dataSource);
           });
     })();
+  }
+
+  showMe()
+  {
+      this.client.getUser(this.authService.getCurrentUser())
+        .subscribe(
+            (res) => {
+                let data = res[0];
+                const me: Contact = {
+                    "id": data.uid ,
+                    "name": data.first_name + " " + data.last_name,
+                    "number": data.number,
+                    "email": data.email
+                }
+                console.log("HERE", data);
+                const dialogRef = this.dialog.open(ShowContactDialogComponent, { width: '700px', data: { contact: me } });
+                dialogRef.afterClosed().subscribe(() => {
+                  this.getContacts(500);
+                });
+            }
+        )
   }
 
   contactClick(row: any) {
@@ -131,7 +152,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
       .subscribe(
         (data: Contact) => {
           console.log(data);
-          this.getContacts();
+          this.getContacts(500);
         }
       );
   }
