@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
   }
 
-  getContacts(ms: int) {
+  getContacts(ms: number) {
     (async () => {
       // Do something before delay
       console.log('before delay')
