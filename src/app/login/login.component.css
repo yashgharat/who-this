@@ -14,11 +14,14 @@
 }
 
 .login-card-title {
-  font-weight: normal;
+  font-family: "Comic Sans MS", "Comic Sans", cursive !important;
   font-size: 34px;
-  line-height: 36px;
   color: #FFF;
-  margin-top: 75px !important;
+  margin-top: 15px !important;
+}
+
+.comic {
+  display: inline;
 }
 
 .login-input {
