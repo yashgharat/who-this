@@ -5,6 +5,7 @@ import { Contact } from '../../shared/services/contact'
 import { AuthService } from '../../shared/services/auth.service'
 
 import { CreateContactDialogComponent} from '../create-contact-dialog/create-contact-dialog.component'
+import { ConfirmDialogModel, ConfirmDialogComponent } from '../../shared/misc/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -39,6 +40,20 @@ public id: string;
   onEdit(){
     const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px', data: this.data.contact });
     dialogRef.afterClosed().subscribe(() => {
+    });
+  }
+
+  onDeleteConfirm(){
+    const dialogData = new ConfirmDialogModel("Confirm Delete", "Are you sure?");
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult === true)
+        this.onDelete();
     });
   }
 

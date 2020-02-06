@@ -4,12 +4,15 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { Observable, observable, of } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any; // Save logged in user data
   public uid: string;
+  public err: string;
 
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
@@ -40,16 +43,15 @@ export class AuthService {
 
   // Sign in with email/password
   SignIn(email, password){
-    this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
           this.router.navigate(['home']);
         });
         this.SetUserData(result.user);
       }).catch((error) => {
-        return error.message
+        return error.message;
       })
-      return ""
   }
 
   // Sign up with email/password

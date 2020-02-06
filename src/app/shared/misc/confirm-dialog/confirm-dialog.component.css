@@ -1,0 +1,32 @@
+::ng-deep .mat-dialog-container{
+  background-color: #383838;
+}
+
+.confirm {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  /* identical to box height, or 114% */
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  /* Primary/200 */
+  color: #F48FB2;
+}
+
+.cancel {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  /* identical to box height, or 114% */
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  /* Primary/200 */
+  color: #F48FB2;
+}
+
+.text {
+  color: white;
+  text-align: center;
+}

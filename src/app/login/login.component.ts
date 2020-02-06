@@ -19,14 +19,21 @@ export class LoginComponent implements OnInit {
   hide = true;
 
   constructor(
-      public authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {
   }
 
   onSignIn() {
-      this.message = this.authService.SignIn(this.signinForm.controls['email'].value, this.signinForm.controls['password'].value);
+    this.authService.SignIn(this.signinForm.controls['email'].value,
+      this.signinForm.controls['password'].value);
+  }
+
+  keyDownFunction(event) {
+    if (event.keyCode == 13) {
+      this.onSignIn();
+    }
   }
 
 }

@@ -7,6 +7,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { Contact, sendContact } from '../shared/services/contact'
 import { Observable, observable, of } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { ConfirmDialogModel, ConfirmDialogComponent } from '../shared/misc/confirm-dialog/confirm-dialog.component';
 import {
   startWith,
   map,
@@ -69,7 +70,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
     (async () => {
       // Do something before delay
       console.log('before delay')
-      await this.delay(2000);
+      await this.delay(500);
       this.client.getContacts(this.authService.getCurrentUser())
         .subscribe(
           (data) => {
@@ -106,6 +107,20 @@ export class HomeComponent implements OnInit, AfterContentInit {
     const dialogRef = this.dialog.open(CreateContactDialogComponent, { width: '700px', data: this.selected });
     dialogRef.afterClosed().subscribe(() => {
       this.getContacts();
+    });
+  }
+
+  deleteConfirm() {
+    const dialogData = new ConfirmDialogModel("Confirm Delete", "Are you sure?");
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult === true)
+        this.deleteContact();
     });
   }
 

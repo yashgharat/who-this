@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { sendContact, Contact } from './contact'
-import { createUser } from './user'
+import { updateUser } from './user'
 import { interval } from 'rxjs/observable/interval';
 import { map, flatMap, timeout, takeWhile } from 'rxjs/operators';
 
@@ -15,9 +15,11 @@ export class RequestHelperService {
   constructor(private client: HttpClient) {
   }
 
-  createUser(user: createUser) {
+  updateUser(user: updateUser) {
+    console.log(user);
+
     if (user.uid) {
-      return this.client.post<createUser>(this.baseURL + "create-user", user, {
+      return this.client.put<updateUser>(this.baseURL + "update-user", user, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
         })

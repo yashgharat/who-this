@@ -4,7 +4,7 @@ export interface User {
   emailVerified: boolean;
 }
 
-export interface createUser {
+export interface updateUser {
   uid: string,
   email: string,
   first_name: string,

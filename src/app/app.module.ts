@@ -27,6 +27,7 @@ import { CreateContactDialogComponent } from './home/create-contact-dialog/creat
 import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
 import { RequestHelperService } from './shared/services/request-helper.service';
 import { ShowContactDialogComponent } from './home/show-contact-dialog/show-contact-dialog.component';
+import { ConfirmDialogComponent } from './shared/misc/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ShowContactDialogComponent } from './home/show-contact-dialog/show-cont
     HomeComponent,
     CreateContactDialogComponent,
     PhoneMaskDirective,
-    ShowContactDialogComponent
+    ShowContactDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ import { ShowContactDialogComponent } from './home/show-contact-dialog/show-cont
   ],
   providers: [RequestHelperService],
   bootstrap: [AppComponent],
-  entryComponents: [CreateContactDialogComponent, ShowContactDialogComponent],
+  entryComponents: [CreateContactDialogComponent, ShowContactDialogComponent, ConfirmDialogComponent],
   exports: [PhoneMaskDirective]
 })
 export class AppModule { }

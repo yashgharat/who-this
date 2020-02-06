@@ -2,7 +2,7 @@
   <mat-card class="login-card mat-elevation-z16">
     <mat-card-title class="login-card-title">Welcome</mat-card-title>
     <mat-card-content>
-      <form [formGroup]="signinForm">
+      <form [formGroup]="signinForm" (keydown)="keyDownFunction($event)">
         <p>
           <mat-form-field class="login-input" appearance="fill">
             <mat-label>Username</mat-label>
@@ -13,17 +13,15 @@
         <p>
           <mat-form-field class="login-input" appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" #userPassword [type]="hide ? 'password' : 'text'"required>
+            <input matInput formControlName="password" placeholder="Password" #userPassword [type]="hide ? 'password' : 'text'"required>
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
         </p>
+        <button mat-raised-button class="login-button" (click)="onSignIn()" (keydown.enter)="onSignIn()">Login</button>
       </form>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button class="login-button" (click)="onSignIn()">Login</button>
-    </mat-card-actions>
     <mat-card-footer>
-        <p>{{message}}</p>
+        <p class="error">{{message}}</p>
         <div class="login-reg-label">
           <span>Don't have an account?<a class="redirect" routerLink="/registration">Sign Up</a></span>
         </div>

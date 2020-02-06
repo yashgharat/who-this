@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from "../../shared/services/auth.service";
 import { RequestHelperService } from '../../shared/services/request-helper.service'
-import { createUser } from '../../shared/services/user'
+import { updateUser } from '../../shared/services/user'
 import { Observable } from 'rxjs/Observable';
 
 
@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
     let varpassword = this.registrationForm.controls['password'].value;
     this.authService.SignUp(varemail, varpassword);
 
-    const newUser: createUser = {
+    const newUser: updateUser = {
       "uid": this.authService.getCurrentUser(),
       "email": varemail,
       "first_name": varfirst_name,
@@ -50,8 +50,8 @@ export class RegistrationComponent implements OnInit {
       (async () => {
         // Do something before delay
         console.log('before delay')
-        await this.delay(4000);
-        this.client.createUser(newUser)
+        await this.delay(2000);
+        this.client.updateUser(newUser)
           .subscribe(
             (data) => {
               console.log(data);

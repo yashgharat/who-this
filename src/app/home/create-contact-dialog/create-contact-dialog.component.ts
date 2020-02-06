@@ -26,7 +26,7 @@ export class CreateContactDialogComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    phone: new FormControl(''),
+    phone: new FormControl('',[Validators.maxLength(13)]),
     email: new FormControl('', [Validators.email])
   });
 
@@ -76,6 +76,12 @@ export class CreateContactDialogComponent implements OnInit {
         );
     }
     this.flag = false;
+  }
+
+  keyDownFunction(event) {
+    if (event.keyCode == 13) {
+      this.onSave();
+    }
   }
 
 }

@@ -2,7 +2,7 @@
   <h2 mat-dialog-title class="dialog-title">create new contact</h2>
   <div mat-dialog-content class="content" align="center" style="height: calc(100% - 127px);">
     <hr>
-    <form [formGroup]="form">
+    <form [formGroup]="form" (keydown)="keyDownFunction($event)">
       <div class="name">
         <span class="contact-span">
           <mat-icon class="contact-icon">account_circle</mat-icon>
